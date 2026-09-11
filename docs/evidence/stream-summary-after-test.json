@@ -1,0 +1,22 @@
+{
+  "assignment_logs": {
+    "created_at": 1789158169481997,
+    "doc_time_min": 1789158169481997,
+    "doc_time_max": 1789160076501220,
+    "doc_num": 1805,
+    "file_num": 13,
+    "storage_size": 0.33125972747802734,
+    "compressed_size": 0.050067901611328125,
+    "index_size": 0.07076168060302734
+  },
+  "synthetic_latency_ms": {
+    "created_at": 1789158215945004,
+    "doc_time_min": 1789158214499000,
+    "doc_time_max": 1789160076498000,
+    "doc_num": 1537,
+    "file_num": 18,
+    "storage_size": 0.1924762725830078,
+    "compressed_size": 0.039356231689453125,
+    "index_size": 0.0
+  }
+}

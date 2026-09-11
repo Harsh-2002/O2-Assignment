@@ -1,0 +1,390 @@
+{
+  "version": 5,
+  "dashboardId": "7504278211153395712",
+  "title": "O2 Assignment - Metrics",
+  "description": "Synthetic latency and ingestion monitoring. Sender byte rate is not server-side accepted volume.",
+  "role": "",
+  "owner": "o2-assignment-gke.3jc9hpw2mkf1lwkht3vqmrvjxsr@sa.internal",
+  "created": "2026-09-11T20:42:15Z",
+  "tabs": [
+    {
+      "tabId": "default",
+      "name": "Overview",
+      "panels": [
+        {
+          "id": "Panel_assignment_metrics_1",
+          "type": "line",
+          "title": "Synthetic latency by service (ms)",
+          "description": "",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 2.0,
+            "top_results_others": false,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1.0,
+                "max": 100.0
+              },
+              "size_fixed": 2.0
+            },
+            "drilldown": [],
+            "mark_line": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false,
+            "table_transpose": false,
+            "table_dynamic_columns": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp, '1 minute') AS x_axis_1, avg(value) AS y_axis_1, service AS breakdown_1 FROM \"synthetic_latency_ms\" GROUP BY x_axis_1, breakdown_1 ORDER BY x_axis_1",
+              "vrlFunctionQuery": "",
+              "customQuery": true,
+              "fields": {
+                "stream": "synthetic_latency_ms",
+                "stream_type": "metrics",
+                "x": [
+                  {
+                    "label": "Time",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Latency (ms)",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": "#5960b2"
+                  }
+                ],
+                "z": [],
+                "breakdown": [
+                  {
+                    "label": "Service",
+                    "alias": "breakdown_1",
+                    "column": "breakdown_1",
+                    "color": null
+                  }
+                ],
+                "filter": {
+                  "filterType": "group",
+                  "logicalOperator": "AND",
+                  "conditions": []
+                }
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0,
+                "time_shift": []
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "w": 24,
+            "h": 13,
+            "i": 1
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_assignment_metrics_2",
+          "type": "line",
+          "title": "Ingested synthetic metric samples/sec",
+          "description": "Stored synthetic_latency_ms records per one-minute bucket divided by 60. Partial boundary buckets can undercount; not a byte-rate measurement.",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 2.0,
+            "top_results_others": false,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1.0,
+                "max": 100.0
+              },
+              "size_fixed": 2.0
+            },
+            "drilldown": [],
+            "mark_line": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false,
+            "table_transpose": false,
+            "table_dynamic_columns": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp, '1 minute') AS x_axis_1, count(*) / 60.0 AS y_axis_1 FROM \"synthetic_latency_ms\" GROUP BY x_axis_1 ORDER BY x_axis_1",
+              "vrlFunctionQuery": "",
+              "customQuery": true,
+              "fields": {
+                "stream": "synthetic_latency_ms",
+                "stream_type": "metrics",
+                "x": [
+                  {
+                    "label": "Time",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "Samples/sec",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": "#5960b2"
+                  }
+                ],
+                "z": [],
+                "breakdown": [],
+                "filter": {
+                  "filterType": "group",
+                  "logicalOperator": "AND",
+                  "conditions": []
+                }
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0,
+                "time_shift": []
+              }
+            }
+          ],
+          "layout": {
+            "x": 24,
+            "y": 0,
+            "w": 24,
+            "h": 13,
+            "i": 2
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_assignment_metrics_3",
+          "type": "line",
+          "title": "Vector send rate by sink (bytes/sec)",
+          "description": "Vector sender-side byte counter rate. Compression and protocol overhead differ from accepted ingestion size; cloud_metrics includes Vector internal metrics.",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 2.0,
+            "top_results_others": false,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1.0,
+                "max": 100.0
+              },
+              "size_fixed": 2.0
+            },
+            "drilldown": [],
+            "mark_line": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false,
+            "table_transpose": false,
+            "table_dynamic_columns": false
+          },
+          "queryType": "promql",
+          "queries": [
+            {
+              "query": "sum by (component_id) (rate(vector_component_sent_bytes_total{component_id=~\"cloud_logs|cloud_metrics\"}[2m]))",
+              "vrlFunctionQuery": "",
+              "customQuery": true,
+              "fields": {
+                "stream": "vector_component_sent_bytes_total",
+                "stream_type": "metrics",
+                "x": [],
+                "y": [],
+                "z": [],
+                "breakdown": [],
+                "filter": {
+                  "filterType": "group",
+                  "logicalOperator": "AND",
+                  "conditions": []
+                }
+              },
+              "config": {
+                "promql_legend": "{component_id}",
+                "layer_type": "scatter",
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0,
+                "time_shift": []
+              }
+            }
+          ],
+          "layout": {
+            "x": 0,
+            "y": 14,
+            "w": 24,
+            "h": 13,
+            "i": 3
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        },
+        {
+          "id": "Panel_assignment_metrics_4",
+          "type": "line",
+          "title": "Accepted JSON-equivalent rate (GB/hour)",
+          "description": "Uncompressed JSON representation of accepted load-test records, using one-minute buckets. Not compressed network bytes or the billing counter. Partial minutes undercount. Target: approximately 5 GB/hour.",
+          "config": {
+            "show_legends": true,
+            "legends_position": null,
+            "unit": "numbers",
+            "decimals": 2.0,
+            "top_results_others": false,
+            "axis_border_show": false,
+            "legend_width": {
+              "unit": "px"
+            },
+            "base_map": {
+              "type": "osm"
+            },
+            "map_view": {
+              "zoom": 1.0,
+              "lat": 0.0,
+              "lng": 0.0
+            },
+            "map_symbol_style": {
+              "size": "by Value",
+              "size_by_value": {
+                "min": 1.0,
+                "max": 100.0
+              },
+              "size_fixed": 2.0
+            },
+            "drilldown": [],
+            "mark_line": [],
+            "connect_nulls": false,
+            "no_value_replacement": "",
+            "wrap_table_cells": false,
+            "table_transpose": false,
+            "table_dynamic_columns": false
+          },
+          "queryType": "sql",
+          "queries": [
+            {
+              "query": "SELECT histogram(_timestamp, '1 minute') AS x_axis_1, sum(length(concat('{', '\"__hash__\":', cast(\"__hash__\" AS VARCHAR), ',', '\"__name__\":\"', cast(\"__name__\" AS VARCHAR), '\"', ',', '\"_timestamp\":', cast(\"_timestamp\" AS VARCHAR), ',', '\"environment\":\"', cast(\"environment\" AS VARCHAR), '\"', ',', '\"instance\":\"', cast(\"instance\" AS VARCHAR), '\"', ',', '\"region\":\"', cast(\"region\" AS VARCHAR), '\"', ',', '\"route\":\"', cast(\"route\" AS VARCHAR), '\"', ',', '\"run_id\":\"', cast(\"run_id\" AS VARCHAR), '\"', ',', '\"service\":\"', cast(\"service\" AS VARCHAR), '\"', ',', '\"value\":', cast(\"value\" AS VARCHAR), '}'))) * 60.0 / 1000000000 AS y_axis_1 FROM \"synthetic_latency_ms\" WHERE run_id='load-20260911' GROUP BY x_axis_1 ORDER BY x_axis_1",
+              "vrlFunctionQuery": "",
+              "customQuery": true,
+              "fields": {
+                "stream": "synthetic_latency_ms",
+                "stream_type": "metrics",
+                "x": [
+                  {
+                    "label": "Time",
+                    "alias": "x_axis_1",
+                    "column": "x_axis_1",
+                    "color": null
+                  }
+                ],
+                "y": [
+                  {
+                    "label": "GB/hour",
+                    "alias": "y_axis_1",
+                    "column": "y_axis_1",
+                    "color": "#5960b2"
+                  }
+                ],
+                "z": [],
+                "breakdown": [],
+                "filter": {
+                  "filterType": "group",
+                  "logicalOperator": "AND",
+                  "conditions": []
+                }
+              },
+              "config": {
+                "promql_legend": "",
+                "layer_type": "scatter",
+                "weight_fixed": 1.0,
+                "limit": 0.0,
+                "min": 0.0,
+                "max": 100.0,
+                "time_shift": []
+              }
+            }
+          ],
+          "layout": {
+            "x": 24,
+            "y": 14,
+            "w": 24,
+            "h": 13,
+            "i": 4
+          },
+          "htmlContent": "",
+          "markdownContent": ""
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "list": [],
+    "showDynamicFilters": false
+  },
+  "defaultDatetimeDuration": {
+    "type": "relative",
+    "relativeTimePeriod": "30m"
+  }
+}

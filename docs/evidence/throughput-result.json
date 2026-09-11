@@ -1,0 +1,111 @@
+{
+  "run_id": "load-20260911",
+  "window_start_utc": "2026-09-11T21:00:00Z",
+  "window_end_utc": "2026-09-11T21:04:00Z",
+  "window_seconds": 240,
+  "byte_definition": "Uncompressed JSON representation reconstructed from accepted records; not a billable ingestion counter.",
+  "streams": {
+    "assignment_logs": {
+      "result": {
+        "records": 229322,
+        "first_timestamp": 1789160400116570,
+        "last_timestamp": 1789160639178661,
+        "json_bytes": 333609143,
+        "gb_per_hour": 5.004137145
+      },
+      "request": {
+        "query": {
+          "sql": "SELECT count(*) AS records, min(_timestamp) AS first_timestamp, max(_timestamp) AS last_timestamp, sum(length(concat('{', '\"_timestamp\":', cast(\"_timestamp\" AS VARCHAR), ',', '\"cluster\":\"', cast(\"cluster\" AS VARCHAR), '\"', ',', '\"level\":\"', cast(\"level\" AS VARCHAR), '\"', ',', '\"message\":\"', cast(\"message\" AS VARCHAR), '\"', ',', '\"run_id\":\"', cast(\"run_id\" AS VARCHAR), '\"', ',', '\"sequence\":', cast(\"sequence\" AS VARCHAR), ',', '\"service\":\"', cast(\"service\" AS VARCHAR), '\"', ',', '\"synthetic\":', cast(\"synthetic\" AS VARCHAR), ',', '\"timestamp\":\"', cast(\"timestamp\" AS VARCHAR), '\"', '}'))) AS json_bytes FROM \"assignment_logs\" WHERE run_id='load-20260911' AND _timestamp >= 1789160400000000 AND _timestamp < 1789160640000000",
+          "start_time": 1789160400000000,
+          "end_time": 1789160640000000,
+          "from": 0,
+          "size": 1
+        }
+      },
+      "response": {
+        "took": 165,
+        "took_detail": {
+          "total": 165,
+          "cache_took": 3,
+          "file_list_took": 14,
+          "wait_in_queue": 4,
+          "idx_took": 0,
+          "search_took": 120
+        },
+        "hits": [
+          {
+            "records": 229322,
+            "first_timestamp": 1789160400116570,
+            "last_timestamp": 1789160639178661,
+            "json_bytes": 333609143,
+            "gb_per_hour": 5.004137145
+          }
+        ],
+        "total": 1,
+        "from": 0,
+        "size": 1,
+        "cached_ratio": 0,
+        "scan_size": 318,
+        "idx_scan_size": 0,
+        "scan_records": 229322,
+        "trace_id": "365e51c6831b93ba2a4423496a492d26",
+        "is_partial": false,
+        "result_cache_ratio": 0,
+        "work_group": "short",
+        "is_histogram_eligible": true,
+        "peak_memory_usage": 0.0
+      }
+    },
+    "synthetic_latency_ms": {
+      "result": {
+        "records": 1171200,
+        "first_timestamp": 1789160400080000,
+        "last_timestamp": 1789160639137000,
+        "json_bytes": 333008801,
+        "gb_per_hour": 4.995132015
+      },
+      "request": {
+        "query": {
+          "sql": "SELECT count(*) AS records, min(_timestamp) AS first_timestamp, max(_timestamp) AS last_timestamp, sum(length(concat('{', '\"__hash__\":', cast(\"__hash__\" AS VARCHAR), ',', '\"__name__\":\"', cast(\"__name__\" AS VARCHAR), '\"', ',', '\"_timestamp\":', cast(\"_timestamp\" AS VARCHAR), ',', '\"environment\":\"', cast(\"environment\" AS VARCHAR), '\"', ',', '\"instance\":\"', cast(\"instance\" AS VARCHAR), '\"', ',', '\"region\":\"', cast(\"region\" AS VARCHAR), '\"', ',', '\"route\":\"', cast(\"route\" AS VARCHAR), '\"', ',', '\"run_id\":\"', cast(\"run_id\" AS VARCHAR), '\"', ',', '\"service\":\"', cast(\"service\" AS VARCHAR), '\"', ',', '\"value\":', cast(\"value\" AS VARCHAR), '}'))) AS json_bytes FROM \"synthetic_latency_ms\" WHERE run_id='load-20260911' AND _timestamp >= 1789160400000000 AND _timestamp < 1789160640000000",
+          "start_time": 1789160400000000,
+          "end_time": 1789160640000000,
+          "from": 0,
+          "size": 1
+        }
+      },
+      "response": {
+        "took": 180,
+        "took_detail": {
+          "total": 180,
+          "cache_took": 4,
+          "file_list_took": 0,
+          "wait_in_queue": 2,
+          "idx_took": 0,
+          "search_took": 156
+        },
+        "hits": [
+          {
+            "records": 1171200,
+            "first_timestamp": 1789160400080000,
+            "last_timestamp": 1789160639137000,
+            "json_bytes": 333008801,
+            "gb_per_hour": 4.995132015
+          }
+        ],
+        "total": 1,
+        "from": 0,
+        "size": 1,
+        "cached_ratio": 0,
+        "scan_size": 323,
+        "idx_scan_size": 0,
+        "scan_records": 1193160,
+        "trace_id": "22a714dc557f739c2f6884b2311a4c13",
+        "is_partial": false,
+        "result_cache_ratio": 0,
+        "work_group": "short",
+        "is_histogram_eligible": true,
+        "peak_memory_usage": 0.0
+      }
+    }
+  }
+}

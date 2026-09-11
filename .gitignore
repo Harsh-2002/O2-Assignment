@@ -1,0 +1,27 @@
+# Terraform local data and credentials
+**/.terraform/
+*.tfstate*
+*.tfplan
+*.tfvars
+*.tfvars.json
+.terraform.tfstate.lock.info
+crash.log
+crash.*.log
+
+# Local secrets
+.env
+.env.*
+.secrets/
+
+# Original and unused screenshots
+/screenshots/
+
+# Editor and operating-system files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Example and template files stay out of the submission
+*.example
+*.template

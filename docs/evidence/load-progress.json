@@ -1,0 +1,50 @@
+{
+  "run_id": "load-20260911",
+  "checked_at": "2026-09-11T21:01:32Z",
+  "streams": {
+    "assignment_logs": {
+      "query": "SELECT count(*) AS records, min(_timestamp) AS first_timestamp, max(_timestamp) AS last_timestamp, sum(length(concat('{', '\"_timestamp\":', cast(\"_timestamp\" AS VARCHAR), ',', '\"cluster\":\"', cast(\"cluster\" AS VARCHAR), '\"', ',', '\"level\":\"', cast(\"level\" AS VARCHAR), '\"', ',', '\"message\":\"', cast(\"message\" AS VARCHAR), '\"', ',', '\"run_id\":\"', cast(\"run_id\" AS VARCHAR), '\"', ',', '\"sequence\":', cast(\"sequence\" AS VARCHAR), ',', '\"service\":\"', cast(\"service\" AS VARCHAR), '\"', ',', '\"synthetic\":', cast(\"synthetic\" AS VARCHAR), ',', '\"timestamp\":\"', cast(\"timestamp\" AS VARCHAR), '\"', '}'))) AS json_bytes FROM \"assignment_logs\" WHERE run_id='load-20260911'",
+      "result": [
+        {
+          "records": 110571,
+          "first_timestamp": 1789160377119999,
+          "last_timestamp": 1789160491192988,
+          "json_bytes": 160853744
+        }
+      ],
+      "partial": false,
+      "stats": {
+        "created_at": 1789158169481997,
+        "doc_time_min": 1789158169481997,
+        "doc_time_max": 1789159545501211,
+        "doc_num": 1250,
+        "file_num": 10,
+        "storage_size": 0.2291736602783203,
+        "compressed_size": 0.03693866729736328,
+        "index_size": 0.05370044708251953
+      }
+    },
+    "synthetic_latency_ms": {
+      "query": "SELECT count(*) AS records, min(_timestamp) AS first_timestamp, max(_timestamp) AS last_timestamp, sum(length(concat('{', '\"__hash__\":', cast(\"__hash__\" AS VARCHAR), ',', '\"__name__\":\"', cast(\"__name__\" AS VARCHAR), '\"', ',', '\"_timestamp\":', cast(\"_timestamp\" AS VARCHAR), ',', '\"environment\":\"', cast(\"environment\" AS VARCHAR), '\"', ',', '\"instance\":\"', cast(\"instance\" AS VARCHAR), '\"', ',', '\"region\":\"', cast(\"region\" AS VARCHAR), '\"', ',', '\"route\":\"', cast(\"route\" AS VARCHAR), '\"', ',', '\"run_id\":\"', cast(\"run_id\" AS VARCHAR), '\"', ',', '\"service\":\"', cast(\"service\" AS VARCHAR), '\"', ',', '\"value\":', cast(\"value\" AS VARCHAR), '}'))) AS json_bytes FROM \"synthetic_latency_ms\" WHERE run_id='load-20260911'",
+      "result": [
+        {
+          "records": 541680,
+          "first_timestamp": 1789160376137000,
+          "last_timestamp": 1789160492136000,
+          "json_bytes": 154016755
+        }
+      ],
+      "partial": false,
+      "stats": {
+        "created_at": 1789158215945004,
+        "doc_time_min": 1789158214499000,
+        "doc_time_max": 1789160076498000,
+        "doc_num": 1537,
+        "file_num": 18,
+        "storage_size": 0.1924762725830078,
+        "compressed_size": 0.039356231689453125,
+        "index_size": 0.0
+      }
+    }
+  }
+}

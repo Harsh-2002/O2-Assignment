@@ -1,0 +1,66 @@
+{
+  "assignment_logs": {
+    "expected_records": 286200,
+    "response": {
+      "took": 152,
+      "took_detail": {
+        "total": 152,
+        "cache_took": 0,
+        "file_list_took": 4,
+        "wait_in_queue": 4,
+        "idx_took": 0,
+        "search_took": 128
+      },
+      "hits": [
+        {
+          "records": 292401
+        }
+      ],
+      "total": 1,
+      "from": 0,
+      "size": 1000,
+      "cached_ratio": 63,
+      "scan_size": 467,
+      "idx_scan_size": 0,
+      "scan_records": 338282,
+      "trace_id": "2e24d3a498416d72018fd4833b8e3210",
+      "is_partial": false,
+      "result_cache_ratio": 0,
+      "work_group": "short",
+      "is_histogram_eligible": true,
+      "peak_memory_usage": 0.0
+    }
+  },
+  "synthetic_latency_ms": {
+    "expected_records": 1464000,
+    "response": {
+      "took": 139,
+      "took_detail": {
+        "total": 139,
+        "cache_took": 0,
+        "file_list_took": 9,
+        "wait_in_queue": 23,
+        "idx_took": 0,
+        "search_took": 91
+      },
+      "hits": [
+        {
+          "records": 1464000
+        }
+      ],
+      "total": 1,
+      "from": 0,
+      "size": 1000,
+      "cached_ratio": 35,
+      "scan_size": 436,
+      "idx_scan_size": 0,
+      "scan_records": 1618029,
+      "trace_id": "23e190ed75232000a4aa4ab66152869c",
+      "is_partial": false,
+      "result_cache_ratio": 0,
+      "work_group": "short",
+      "is_histogram_eligible": true,
+      "peak_memory_usage": 0.0
+    }
+  }
+}

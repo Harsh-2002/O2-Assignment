@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vector-config
+  namespace: observability
+
+data:
+  vector.yaml: |
+    data_dir: /var/lib/vector
+
+    sources:
+
+      # Low-rate traffic checks connectivity before the finite load test.
+      logs:
+        type: demo_logs
+        format: shuffle
+        interval: 1
+        lines:
+          - '{"service":"checkout","level":"INFO","message":"Order completed"}'
+          - '{"service":"payments","level":"ERROR","message":"Synthetic payment declined"}'
+          - '{"service":"catalog","level":"WARN","message":"Synthetic cache miss"}'
+
+      metric_seed:
+        type: demo_logs
+        format: shuffle
+        interval: 1
+        lines:
+          - '{"service":"checkout","latency_ms":120}'
+          - '{"service":"payments","latency_ms":240}'
+          - '{"service":"catalog","latency_ms":35}'
+
+      internal:
+        type: internal_metrics
+        scrape_interval_secs: 5
+
+    transforms:
+
+      enrich_logs:
+        type: remap
+        inputs: [logs]
+        source: |
+          . = parse_json!(.message)
+          .timestamp = now()
+          .cluster = "o2-assignment-gke"
+          .synthetic = true
+
+      parse_metrics:
+        type: remap
+        inputs: [metric_seed]
+        source: |
+          . = parse_json!(.message)
+          .timestamp = now()
+
+      # Convert synthetic event fields into Prometheus gauges.
+      metrics:
+        type: log_to_metric
+        inputs: [parse_metrics]
+        # Convert synthetic event fields into Prometheus gauges.
+      metrics:
+          - type: gauge
+            field: latency_ms
+            name: synthetic_latency_ms
+            tags:
+              service: '{{service}}'
+              cluster: o2-assignment-gke
+
+    sinks:
+
+      cloud_logs:
+        type: http
+        inputs: [enrich_logs]
+        uri: https://ap1-api.openobserve.ai/api/3JC9hPw2MKf1lwkHt3vQMrvJXsR/assignment_logs/_json
+        method: post
+        # The JSON endpoint expects a batch array, not newline framing.
+        encoding:
+          codec: json
+        compression: gzip
+        auth:
+          strategy: basic
+          user: "${O2_USERNAME}"
+          password: "${O2_PASSWORD}"
+        batch:
+          max_bytes: 1048576
+          timeout_secs: 2
+        buffer:
+          type: memory
+          max_events: 1000
+          when_full: block
+        # Verify accepted records in OpenObserve; startup alone is insufficient.
+        healthcheck:
+          enabled: false
+
+      cloud_metrics:
+        type: prometheus_remote_write
+        inputs: [metrics, internal]
+        endpoint: https://ap1-api.openobserve.ai/api/3JC9hPw2MKf1lwkHt3vQMrvJXsR/prometheus/api/v1/write
+        auth:
+          strategy: basic
+          user: "${O2_USERNAME}"
+          password: "${O2_PASSWORD}"
+        healthcheck:
+          enabled: false
+
+      local_metrics:
+        type: prometheus_exporter
+        inputs: [internal]
+        address: 0.0.0.0:9598

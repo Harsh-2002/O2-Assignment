@@ -1,0 +1,21 @@
+Teardown verification — September 12, 2026 IST
+
+Terraform completion:
+Apply complete! Resources: 0 added, 0 changed, 9 destroyed.
+
+terraform -chdir=terraform state list
+(empty)
+
+gcloud container clusters list --project=personal-500014 --filter='name=o2-assignment-gke' --format=json
+[]
+
+gcloud compute instances list --project=personal-500014 --filter='name~gke-o2-assignment-gke' --format=json
+[]
+
+gcloud compute disks list --project=personal-500014 --filter='name~gke-o2-assignment-gke' --format=json
+[]
+
+gcloud compute networks list --project=personal-500014 --filter='name=o2-assignment-gke' --format=json
+[]
+
+Enabled project APIs were preserved by configuration. OpenObserve data was not deleted.

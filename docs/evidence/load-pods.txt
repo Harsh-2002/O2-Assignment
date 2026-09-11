@@ -1,0 +1,3 @@
+NAME                      READY   STATUS    RESTARTS   AGE     IP           NODE                                         NOMINATED NODE   READINESS GATES
+vector-78579578f4-cg94l   1/1     Running   0          5m33s   10.84.0.21   gke-o2-assignment-gke-vector-27cf461f-v02f   <none>           <none>
+vector-78579578f4-rpttd   1/1     Running   0          5m21s   10.84.0.22   gke-o2-assignment-gke-vector-27cf461f-v02f   <none>           <none>

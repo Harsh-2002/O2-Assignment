@@ -1,0 +1,20 @@
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.003346Z  INFO vector::app: Log level is enabled. level="info"
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.004212Z  INFO vector::app: Loading configs. paths=["/etc/vector/vector.yaml"]
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.130229Z  INFO vector::topology::running: Running healthchecks.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.131221Z  INFO vector: Vector has started. debug="false" version="0.49.0" arch="x86_64" revision="dc7e792 2025-08-12 13:47:08.632326804"
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.131243Z  INFO vector::app: API is disabled, enable by setting `api.enabled` to `true` and use commands like `vector top`.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.132387Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.132454Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.132478Z  INFO vector::topology::builder: Healthcheck passed.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.132516Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-cg94l/vector] 2026-09-11T20:59:36.133365Z  INFO vector::sinks::prometheus::exporter: Building HTTP server. address=0.0.0.0:9598
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:47.997537Z  INFO vector::app: Log level is enabled. level="info"
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:47.998071Z  INFO vector::app: Loading configs. paths=["/etc/vector/vector.yaml"]
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077220Z  INFO vector::topology::running: Running healthchecks.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077327Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077351Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077354Z  INFO vector::topology::builder: Healthcheck disabled.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077362Z  INFO vector::topology::builder: Healthcheck passed.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077362Z  INFO vector: Vector has started. debug="false" version="0.49.0" arch="x86_64" revision="dc7e792 2025-08-12 13:47:08.632326804"
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077371Z  INFO vector::app: API is disabled, enable by setting `api.enabled` to `true` and use commands like `vector top`.
+[pod/vector-78579578f4-rpttd/vector] 2026-09-11T20:59:48.077609Z  INFO vector::sinks::prometheus::exporter: Building HTTP server. address=0.0.0.0:9598
